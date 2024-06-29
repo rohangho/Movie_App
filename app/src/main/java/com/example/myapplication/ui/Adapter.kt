@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -24,6 +25,7 @@ class Adapter(val context:Activity):RecyclerView.Adapter<ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
        holder.movieName.text = listOfItem[position].title
+        holder.progressBar.progress=listOfItem[position].voteAverage?.times(10)?.toInt()?:0
         Glide.with(context).load("https://image.tmdb.org/t/p/w500"+listOfItem[position].posterPath).into(holder.movieImage)
     }
 
@@ -49,5 +51,6 @@ class ViewHolder(view:View): RecyclerView.ViewHolder(view)
 {
     val movieName = view.findViewById<TextView>(R.id.movieName)
     val movieImage = view.findViewById<ImageView>(R.id.movie_image)
+    val progressBar = view.findViewById<ProgressBar>(R.id.progress_circular)
 
 }
