@@ -34,9 +34,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.setLayoutManager(
             LinearLayoutManager(
                 this,
-                LinearLayoutManager.HORIZONTAL,
-                true
-            )
+                LinearLayoutManager.VERTICAL,false)
         )
         homeViewModel.getData()
         observerViewModel()
